@@ -32,3 +32,16 @@ The motors are 1.8 degrees and rated at 1.2A 12V
 Find out the Vref location on the breakout board - Pololu comes with two
 locations: a via close to the chip and the center point of the potentiometer;
 clones mostly only provide the center point of the potentiometer
+
+# Optical Endstops
+
+Adding in cheap endstops from amazon (middle picture at) 
+<http://marlinfw.org/docs/hardware/endstops.html> the end-stops need
+to no longer invert the signal since NC (safety feature) works.
+
+Reminder:
+
+- "V" is Volt (+) and connects to RAMPS "+"
+- "G" is Ground (=) and connects to RAMPS "-"
+- "S" is Singal (-) and connects to RAMPS "S"
+
