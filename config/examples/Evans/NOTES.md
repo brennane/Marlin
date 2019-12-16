@@ -1,3 +1,11 @@
+# RAMPS 1.4 Board:
+
+![Board][pinout] ([Pinout][input])
+
+[pinout]: https://reprap.org/wiki/File:Arduinomega1-4connectors.png>
+
+Hint: When testing, connect black common to USB connector or an AUX ground pin.
+
 # Motors:
 
 The motors are 1.8 degrees and rated at 1.2A 12V
