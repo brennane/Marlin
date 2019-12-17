@@ -138,7 +138,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Linus-Bot 2019.12" /* EVANS */
+#define CUSTOM_MACHINE_NAME "Linus-Bot 2019.12.17" /* EVANS */
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
