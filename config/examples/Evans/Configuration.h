@@ -507,9 +507,18 @@
   //   slow, etc) temperature? Try increasing the I constant.
 
   // 24V 50W heater (11.5 Ohm)
-  #define DEFAULT_Kp 11.75
-  #define DEFAULT_Ki 0.65
+   // EVANS-old
+  // #define DEFAULT_Kp 11.75
+  // #define DEFAULT_Ki 0.65
+  // #define DEFAULT_Kd 35.00
+  #define DEFAULT_Kp 10.0
+  #define DEFAULT_Ki 0.85
   #define DEFAULT_Kd 35.00
+
+  // 220C-250C P10 I0.85 D35
+  // 250C-290C P9  I0.6  D32
+
+M301 E0 P10 I0.85 D35
 
 #endif // PIDTEMP
 
