@@ -147,7 +147,7 @@ M503 ; dump settings to log
 
 # AnyCubic Base
 
-Size: 220m x 220m
+Size: 215mm x 215mm
 
 1. PLA:50-70℃
 2. Flexible filament: 50-70℃
