@@ -110,4 +110,50 @@ Gains are for various control circuits are then given below in the chart.
 | PI            | $0.45 K_u$ | $1.2 K_p / P_u$ | -             |
 | PID           | $0.60 K_u$ | $2   K_p / P_u$ | $K_p P_u / 8$ |
 
+# Current Start G-Code
+
+~~~
+;; EXTRUDER SECTION
+;; M92 E90; E98.2 ; [cold extrude 120mm from E90]
+; M92 E196;
+; M200 D0 ; force linear extrusion calc 
+
+;; PID TUNING 
+;; M303 E0 C10 Swww
+;; M221 S85
+
+M301 E0 P10 I0.95 D35
+;; M301 E0 P11.75 I0.9 D35.00  ;; 218C
+;; M301 E0 P11.37 I0.7998 D40.98 ;; 220C
+;; M301 E0 P8.92 I0.59 D33.62  ;; 250C
+;; M301 E0 P9.06 I0.63 D32.65  ;; 290C
+M304 P109 I21 D143
+M503 ; dump settings to log
+
+;; FLOW RATE
+;; M221 S70
+
+;; debugging - "set position"
+; G92 X50 Y50 Z50
+; G1 Pos || G1 +/- RelPos
+; G1 X Y [F4800]
+; G1 Z [F120]
+
+;; CALIBRATATION ;;
+; M302         ; report current cold extrusion state
+; M302 P0      ; enable cold extrusion checking
+; M302 P1      ; disable cold extrusion checking
+~~~
+
+# AnyCubic Base
+
+Size: 220m x 220m
+
+1. PLA:50-70℃
+2. Flexible filament: 50-70℃
+3. ABS:100-125℃ ( 110℃ is recommended )
+4. PC:100-130℃ ( 120℃ is recommended )
+5. Nelon:90-120℃ ( 110℃ is recommended )
+6. PP:100-130℃ ( 120℃ is recommended )
+7. PETG: 50-70℃
 
