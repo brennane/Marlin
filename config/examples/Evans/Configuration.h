@@ -506,10 +506,10 @@
   //   then slows down as it approaches target (160-170 slow, 170-180 really
   //   slow, etc) temperature? Try increasing the I constant.
 
-  // **retired** 12V on 24V w/ BANG_MAX 196 (18.5V)
-  #define DEFAULT_Kp 10.0
-  #define DEFAULT_Ki 0.85
-  #define DEFAULT_Kd 35.00
+  // 12V on 24V w/ BANG_MAX 196 (18.5V)
+  #define DEFAULT_Kp 6.59
+  #define DEFAULT_Ki 0.33
+  #define DEFAULT_Kd 32.64
 
   // 24V 50W heater (11.5 Ohm) w/ BANG_MAX = 255
   // #define DEFAULT_Kp 107.56
