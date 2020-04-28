@@ -464,7 +464,7 @@
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
 // #define BANG_MAX 255     // EVANS Limits current to nozzle while in bang-bang mode; 255=full current
-#define BANG_MAX 185     // Was: 255 EVANS-Was: (168)
+#define BANG_MAX 255     // Was: 255 EVANS-Was: (168)
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 #if ENABLED(PIDTEMP)
@@ -506,19 +506,19 @@
   //   then slows down as it approaches target (160-170 slow, 170-180 really
   //   slow, etc) temperature? Try increasing the I constant.
 
-  // 24V 50W heater (11.5 Ohm)
-   // EVANS-old
-  // #define DEFAULT_Kp 11.75
-  // #define DEFAULT_Ki 0.65
+  // **retired** 12V on 24V w/ BANG_MAX 185
+  // #define DEFAULT_Kp 10.0           < 10:32:10 PM: 
+  // define DEFAULT_Ki 0.85           < 10:32:10 PM: 
   // #define DEFAULT_Kd 35.00
-  #define DEFAULT_Kp 10.0
-  #define DEFAULT_Ki 0.85
-  #define DEFAULT_Kd 35.00
+
+  // 24V 50W heater (11.5 Ohm) w/ BANG_MAX = 255
+  #define DEFAULT_Kp 107.56
+  #define DEFAULT_Ki 13.96
+  #define DEFAULT_Kd 207.14
+
 
   // 220C-250C P10 I0.85 D35
   // 250C-290C P9  I0.6  D32
-
-M301 E0 P10 I0.85 D35
 
 #endif // PIDTEMP
 
