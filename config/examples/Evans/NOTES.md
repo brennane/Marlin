@@ -6,6 +6,32 @@
 
 Hint: When testing, connect black common to USB connector or an AUX ground pin.
 
+# RAMP Fan Extender
+
+
+~~~
+                   > GND   P11 <
++-----------------+---------------------+
+| NC  | +5V | GND |  GND | VIN | Fan0 + | > FAN-OUT <
+| NC  | +5V | GND |   R    R R |      - |
+| D6  | +5V | GND |   R        |      + |
+| D11 | +5V | GND |   R    R R |      - | > GND <
++-----------------+---------------------+
+~~~
+
+Pin-11 and Ground goes in top.  Top and bottom side pins are used to the extruder fan.
+
+
+See `Configuration_adv.h` 
+
+~~~
+#define E0_AUTO_FAN_PIN 11 /* EVANS: was -1 */
+#define EXTRUDER_AUTO_FAN_TEMPERATURE 50
+#define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
+~~~
+
+
+
 # Motors:
 
 The motors are 1.8 degrees and rated at 1.2A 12V
