@@ -171,6 +171,16 @@ M503 ; dump settings to log
 ; M302 P1      ; disable cold extrusion checking
 ~~~
 
+# Printer Prefs (Repetier Host)
+
+- usbmodem40xxxx
+- baud 2500000
+- stop bits 1
+- parity none
+- xfer ascii
+- rcv cache size 63
+- timeout 40s
+
 # AnyCubic Base
 
 Size: 215mm x 215mm
