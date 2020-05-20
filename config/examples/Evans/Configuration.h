@@ -138,7 +138,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Linus-Bot 2020.05.01" /* EVANS */
+#define CUSTOM_MACHINE_NAME "Linus-Bot 2020.05.20" /* EVANS */
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -409,7 +409,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 5 /* EVANS */
+#define TEMP_SENSOR_0 11 /* (temporary) */
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -464,7 +464,7 @@
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
 // #define BANG_MAX 255    // EVANS Limits current to nozzle while in bang-bang mode; 255=full current
-#define BANG_MAX 170       // Was: 255 EVANS-Was: (168)
+#define BANG_MAX 182       // Was: 255 EVANS-Was: (168)
 #define PID_MAX BANG_MAX   // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95        // Smoothing factor within any PID loop
 #if ENABLED(PIDTEMP)
@@ -476,7 +476,7 @@
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
   //#define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
-  #define PID_FUNCTIONAL_RANGE 20 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 40 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
@@ -508,9 +508,9 @@
   //   slow, etc) temperature? Try increasing the I constant.
 
   // 12V on 24V w/ BANG_MAX 196 (18.5V)
-  #define DEFAULT_Kp 6.59
-  #define DEFAULT_Ki 0.33
-  #define DEFAULT_Kd 32.64
+  #define DEFAULT_Kp 6.5
+  #define DEFAULT_Ki 0.28
+  #define DEFAULT_Kd 37.65
 
   // 24V 50W heater (11.5 Ohm) w/ BANG_MAX = 255
   // #define DEFAULT_Kp 107.56
