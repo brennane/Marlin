@@ -193,3 +193,44 @@ Size: 215mm x 215mm
 6. PP:100-130℃ ( 120℃ is recommended )
 7. PETG: 50-70℃
 
+# Titan AERO update
+
+1. Moved Xstop from XMIN to XMAX location on RAMPS board
+2. New Motor:
+   - Step Angle: 0.9°
+   - Rated Current: 1.68A
+   - Body length: 40mm
+   - Faceplate: NEMA 17
+   - Motor cable length: 1m
+3. ref.  <https://e3d-online.dozuki.com/c/Titan_Aero_Firmware_Guides>
+4. motor steps/mm -> 837 due to 0.9 motor _and_ adding gear.
+5. will need to redo PID tuning, using aero thermistor
+6. themistor #define TEMP_SENSOR_0 5
+
+
+# PINDAv2
+
+Per [this document](https://github.com/ultimachine/Einsy-Rambo/blob/1.1a/board/Project%20Outputs/Schematic%20Prints_Einsy%20Rambo_1.1a.PDF)
+the PINDAv2 has the following layout:
+
+J15
+Pin 1: Z-THERM -> D47
+Pin 2: Z-MIN   -> D32
+Pin 3: GND
+Pin 4: VCC 
+
+Pindav2 should also work at 5V.
+
+Newer marlin has support for the temp sensor. (this config is not there yet)
+
+Any arguments left out of G29 will use your configured defaults.
+
+By default G28 disables bed leveling. Follow with M420 S to turn leveling
+on, or use RESTORE_LEVELING_AFTER_G28 to automatically keep leveling on
+after G28.
+
+To save time and machine wear, save your matrix to EEPROM with M500 and in
+your slicer’s “Starting G-code” replace G29 with M420 S1 to enable your
+last-saved matrix.
+
+
