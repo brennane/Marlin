@@ -39,6 +39,8 @@ The motors are 1.8 degrees and rated at 1.2A 12V
 - DRV8825: Imax = 2 * Vref   (which means if Imax = 1.5A, then Vref is to be set to 1.5/2 V = 0.75V)
 - A4988:   Imax = 2.5 * Vref // with Rcs = 0,05 Ohm
 
+
+
 <https://blog.prusaprinters.org/calculator/>
 
 ## A4988
