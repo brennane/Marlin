@@ -192,7 +192,7 @@
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
   #define THERMAL_PROTECTION_PERIOD 40        // Seconds
   #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
-  #if enabled(EVANS)
+  #if ENABLED(EVANS)
     #undef THERMAL_PROTECTION_PERIOD
     #undef THERMAL_PROTECTION_HYSTERESIS
     #define THERMAL_PROTECTION_PERIOD 60        // Seconds
@@ -218,7 +218,7 @@
    */
   #define WATCH_TEMP_PERIOD 20                // Seconds
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
-  #if enabled(EVANS)
+  #if ENABLED(EVANS)
     #undef WATCH_TEMP_PERIOD
     #define WATCH_TEMP_PERIOD 60
   #endif
@@ -497,7 +497,7 @@
 #define E6_AUTO_FAN_PIN -1
 #define E7_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   // RAMPS Fan Extender: PIN 11 (speed 255 or 0) or PIN 6 (PWM okay)
   #undef E0_AUTO_FAN_PIN
   #define E0_AUTO_FAN_PIN 11
@@ -2007,7 +2007,7 @@
  * Note that M207 / M208 / M209 settings are saved to EEPROM.
  */
 //#define FWRETRACT
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   // mixed results - maybe more needed for a bowden setup
   // #define FWRETRACT
 #endif

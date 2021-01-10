@@ -821,7 +821,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef DEFAULT_AXIS_STEPS_PER_UNIT
    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 8000, 837 }   // EVANS-TITAN
 #endif
@@ -832,7 +832,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef DEFAULT_MAX_FEEDRATE
    // #define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 1200} // EVANS
    #define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 50} // EVANS
@@ -850,7 +850,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   #undef DEFAULT_MAX_ACCELERATION
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 5, 2000 } // EVANS
 #endif
@@ -871,7 +871,7 @@
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   #undef DEFAULT_ACCELERATION
   #undef DEFAULT_RETRACT_ACCELERATION
   #undef DEFAULT_TRAVEL_ACCELERATION
@@ -926,7 +926,7 @@
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
 //#define S_CURVE_ACCELERATION
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   #define S_CURVE_ACCELERATION
 #endif
 
@@ -1192,7 +1192,7 @@
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef INVERT_Z_DIR
    #define INVERT_Z_DIR true
 #endif
@@ -1225,7 +1225,7 @@
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef X_HOME_DIR
    #define X_HOME_DIR 1
 #endif
@@ -1243,7 +1243,7 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 200
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef Z_MAX_POS
    #define Z_MAX_POS 185
 #endif
@@ -1510,7 +1510,7 @@
 // Homing speeds (mm/min)
 #define HOMING_FEEDRATE_XY (50*60)
 #define HOMING_FEEDRATE_Z  (4*60)
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    #undef HOMING_FEEDRATE_Z
    #define HOMING_FEEDRATE_Z  (3*60)
 #endif
@@ -1591,7 +1591,7 @@
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
 //#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
-#if enabled(EVANS)
+#if ENABLED(EVANS)
   #define EEPROM_SETTINGS
 #endif
 //#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
@@ -1847,7 +1847,7 @@
  * you must uncomment the following option or it won't work.
  */
 //#define SDSUPPORT
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    //#define SDSUPPORT // removed the LCD
 #endif
 
@@ -1961,7 +1961,7 @@
 // Note: Usually sold with a white PCB.
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
-#if enabled(EVANS)
+#if ENABLED(EVANS)
    //#define REPRAP_DISCOUNT_SMART_CONTROLLER  // REMOVED 
 #endif
 
