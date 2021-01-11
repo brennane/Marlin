@@ -134,7 +134,7 @@
 
 // Choose the name from boards.h that matches your setup
 #if ENABLED(EVANS)
-   #undef  MOTHERBOARD BOARD_RAMPS_14_EFB
+   #undef  MOTHERBOARD
    #undef  CUSTOM_MACHINE_NAME
    #define MOTHERBOARD BOARD_RAMPS_14_EFB
    #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.09"
@@ -1245,7 +1245,9 @@
 #define Z_MAX_POS 200
 #if ENABLED(EVANS)
    #undef Z_MAX_POS
-   #define Z_MAX_POS 185
+   #undef Z_MIN_POS
+   #define Z_MAX_POS 185  // MAX HEIGHT
+   #define Z_MIN_POS -1   // FOR HOME TUNING
 #endif
 
 /**
