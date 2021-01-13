@@ -1247,7 +1247,7 @@
    #undef Z_MAX_POS
    #undef Z_MIN_POS
    #define Z_MAX_POS 185  // MAX HEIGHT
-   #define Z_MIN_POS -1   // FOR HOME TUNING
+   #define Z_MIN_POS -2   // FOR HOME TUNING
 #endif
 
 /**
