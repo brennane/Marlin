@@ -137,7 +137,7 @@
    #undef  MOTHERBOARD
    #undef  CUSTOM_MACHINE_NAME
    #define MOTHERBOARD BOARD_RAMPS_14_EFB
-   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.09"
+   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.13"
 #endif
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_RAMPS_14_EFB
@@ -442,7 +442,7 @@
 #if ENABLED(EVANS)
     #undef TEMP_SENSOR_0
     #undef TEMP_SENSOR_BED
-    #define TEMP_SENSOR_0 11
+    #define TEMP_SENSOR_0 6
     #define TEMP_SENSOR_BED 5
 #endif
 
@@ -1235,6 +1235,12 @@
 // The size of the print bed
 #define X_BED_SIZE 200
 #define Y_BED_SIZE 200
+#if ENABLED(EVANS)
+   #undef X_BED_SIZE
+   #undef Y_BED_SIZE
+   #define X_BED_SIZE 220
+   #define Y_BED_SIZE 220
+#endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1246,7 +1252,7 @@
 #if ENABLED(EVANS)
    #undef Z_MAX_POS
    #undef Z_MIN_POS
-   #define Z_MAX_POS 185  // MAX HEIGHT
+   #define Z_MAX_POS 190  // MAX HEIGHT
    #define Z_MIN_POS -2   // FOR HOME TUNING
 #endif
 
