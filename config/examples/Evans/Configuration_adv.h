@@ -500,7 +500,13 @@
 #if ENABLED(EVANS)
   // RAMPS Fan Extender: PIN 11 (speed 255 or 0) or PIN 6 (PWM okay)
   #undef E0_AUTO_FAN_PIN
-  #define E0_AUTO_FAN_PIN 11
+  // #define E0_AUTO_FAN_PIN 11
+  // #define E0_AUTO_FAN_PIN 6
+  // Update: moved extender offset two pins D11->D5, D6->D4
+  //         to the left of servo block (ramps1.4)
+  //         (added link from V5->VCC) to improve power to
+  //         servo (see arduino forums)
+  #define E0_AUTO_FAN_PIN 5
 #endif
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
@@ -728,6 +734,9 @@
    * Use the option below to force an eeprom write to a V3.1 probe regardless.
    */
   //#define BLTOUCH_SET_5V_MODE
+#if ENABLED(EVANS)
+  #define BLTOUCH_SET_5V_MODE
+#endif
 
   /**
    * Safety: Activate if connecting a probe with an unknown voltage mode.

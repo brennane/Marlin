@@ -76,7 +76,7 @@
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 #if ENABLED(EVANS)
-   #undef STRING_CONFIG_H_AUTHOR 
+   #undef STRING_CONFIG_H_AUTHOR
    #define STRING_CONFIG_H_AUTHOR "(bhe, Evans 12-24V)" // Who made the changes.
 #endif
 
@@ -137,7 +137,7 @@
    #undef  MOTHERBOARD
    #undef  CUSTOM_MACHINE_NAME
    #define MOTHERBOARD BOARD_RAMPS_14_EFB
-   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.13"
+   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.14"
 #endif
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_RAMPS_14_EFB
@@ -494,7 +494,7 @@
 #define HEATER_7_MAXTEMP 275
 #define BED_MAXTEMP      150
 #if ENABLED(EVANS)
-    #undef HEATER_0_MAXTEMP 
+    #undef HEATER_0_MAXTEMP
     #define HEATER_0_MAXTEMP 305
 #endif
 
@@ -732,6 +732,10 @@
 #define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
+#if ENABLED(EVANS)
+  #undef Z_MIN_PROBE_ENDSTOP_INVERTING
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+#endif
 
 /**
  * Stepper Drivers
@@ -945,6 +949,9 @@
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#if ENABLED(EVANS)
+   #undef  Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#endif
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -965,6 +972,9 @@
  *      - normally-open switches to 5V and D32.
  */
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#if ENABLED(EVANS)
+   #define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#endif
 
 /**
  * Probe Type
@@ -998,11 +1008,19 @@
  */
 //#define Z_PROBE_SERVO_NR 0       // Defaults to SERVO 0 connector.
 //#define Z_SERVO_ANGLES { 70, 0 } // Z Servo Deploy and Stow angles
+#if ENABLED(EVANS)
+    // NR 0 -> D11 (Here)
+    #define Z_PROBE_SERVO_NR 0
+    #define Z_SERVO_ANGLES { 10, 90 }
+#endif
 
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
 //#define BLTOUCH
+#if ENABLED(EVANS)
+   #define BLTOUCH
+#endif
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -1090,10 +1108,18 @@
  *     O-- FRONT --+
  */
 #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+#if ENABLED(EVANS)
+   #undef NOZZLE_TO_PROBE_OFFSET
+   #define NOZZLE_TO_PROBE_OFFSET { -30, 30, 2 }
+#endif
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 10
+#if ENABLED(EVANS)
+   #undef PROBING_MARGIN
+   #define PROBING_MARGIN 35
+#endif
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_SPEED (133*60)
@@ -1228,6 +1254,7 @@
 #if ENABLED(EVANS)
    #undef X_HOME_DIR
    #define X_HOME_DIR 1
+   #define Z_HOMING_HEIGHT  4
 #endif
 
 // @section machine
@@ -1360,6 +1387,9 @@
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
+#if ENABLED(EVANS)
+   #define AUTO_BED_LEVELING_3POINT
+#endif
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
@@ -1509,6 +1539,9 @@
 // - Prevent Z homing when the Z probe is outside bed area.
 //
 //#define Z_SAFE_HOMING
+#if ENABLED(EVANS)
+   #define Z_SAFE_HOMING
+#endif
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -1970,7 +2003,7 @@
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
 #if ENABLED(EVANS)
-   //#define REPRAP_DISCOUNT_SMART_CONTROLLER  // REMOVED 
+   //#define REPRAP_DISCOUNT_SMART_CONTROLLER  // REMOVED
 #endif
 
 //
@@ -2548,6 +2581,13 @@
 // 300ms is a good value but you can try less delay.
 // If the servo can't reach the requested position, increase it.
 #define SERVO_DELAY { 300 }
+#if ENABLED(EVANS)
+   #undef SERVO_DELAY
+   // #define SERVO_DELAY { 200, 200 }
+   #define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+   #define SERVO_DELAY { 100, 100, 100 }
+#endif
+
 
 // Only power servos during movement, otherwise leave off to prevent jitter
 //#define DEACTIVATE_SERVOS_AFTER_MOVE
