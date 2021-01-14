@@ -1238,8 +1238,8 @@
 #if ENABLED(EVANS)
    #undef X_BED_SIZE
    #undef Y_BED_SIZE
-   #define X_BED_SIZE 220
-   #define Y_BED_SIZE 220
+   #define X_BED_SIZE 215
+   #define Y_BED_SIZE 215
 #endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
