@@ -137,7 +137,7 @@
    #undef  MOTHERBOARD
    #undef  CUSTOM_MACHINE_NAME
    #define MOTHERBOARD BOARD_RAMPS_14_EFB
-   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.14"
+   #define CUSTOM_MACHINE_NAME "Linus-Bot 2021.01.14 (c)"
 #endif
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_RAMPS_14_EFB
@@ -442,7 +442,8 @@
 #if ENABLED(EVANS)
     #undef TEMP_SENSOR_0
     #undef TEMP_SENSOR_BED
-    #define TEMP_SENSOR_0 6
+    // WINSINN HT-NTC100K use type 1, 11, or 13
+    #define TEMP_SENSOR_0 1
     #define TEMP_SENSOR_BED 5
 #endif
 
@@ -1110,7 +1111,9 @@
 #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
 #if ENABLED(EVANS)
    #undef NOZZLE_TO_PROBE_OFFSET
-   #define NOZZLE_TO_PROBE_OFFSET { -30, 30, 2 }
+   // on my RRG X/Y is inverted (facing machine) in picture
+   // this is a float
+   #define NOZZLE_TO_PROBE_OFFSET { 30, -30, -2.1 }
 #endif
 
 // Most probes should stay away from the edges of the bed, but
@@ -1388,7 +1391,7 @@
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 #if ENABLED(EVANS)
-   #define AUTO_BED_LEVELING_3POINT
+   #define AUTO_BED_LEVELING_UBL
 #endif
 
 /**
@@ -1396,6 +1399,9 @@
  * this option to have G28 restore the prior leveling state.
  */
 //#define RESTORE_LEVELING_AFTER_G28
+#if ENABLED(EVANS)
+    #define RESTORE_LEVELING_AFTER_G28
+#endif
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1420,6 +1426,9 @@
    * Enable the G26 Mesh Validation Pattern tool.
    */
   //#define G26_MESH_VALIDATION
+  #if ENABLED(EVANS)
+     #define G26_MESH_VALIDATION
+  #endif
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1427,6 +1436,14 @@
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for the G26 Mesh Validation Tool.
     #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.
     #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
+    #if ENABLED(EVANS)
+       #undef MESH_TEST_HOTEND_TEMP
+       #undef G26_XY_FEEDRATE
+       #undef MESH_TEST_LAYER_HEIGHT
+       #define MESH_TEST_HOTEND_TEMP  220
+       #define G26_XY_FEEDRATE         30
+       #define MESH_TEST_LAYER_HEIGHT 0.2
+    #endif
   #endif
 
 #endif
@@ -1469,6 +1486,16 @@
   #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
+  #if ENABLED(EVANS)
+     #undef GRID_MAX_POINTS_X
+     #undef GRID_MAX_POINTS_Y
+     #define GRID_MAX_POINTS_X 3
+     #define GRID_MAX_POINTS_Y 3
+     // is this the same?
+     #undef MESH_INSET
+     #define MESH_INSET 10
+     // #define MESH_INSET PROBING_MARGIN
+  #endif
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500
