@@ -549,9 +549,9 @@
     #undef DEFAULT_Kp
     #undef DEFAULT_Ki
     #undef DEFAULT_Kd
-    #define DEFAULT_Kp 6.5
-    #define DEFAULT_Ki 0.28
-    #define DEFAULT_Kd 37.65
+    #define DEFAULT_Kp 9.78
+    #define DEFAULT_Ki 0.83
+    #define DEFAULT_Kd 28.84
   #endif
 #endif // PIDTEMP
 
@@ -735,7 +735,7 @@
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 #if ENABLED(EVANS)
   #undef Z_MIN_PROBE_ENDSTOP_INVERTING
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 #endif
 
 /**
@@ -863,6 +863,10 @@
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000 } // ...or, set your own edit limits
+#endif
+#if ENABLED(EVANS)
+  #undef MAX_ACCEL_EDIT_VALUES
+  #define MAX_ACCEL_EDIT_VALUES       { 4000, 4000, 150, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1113,7 +1117,7 @@
    #undef NOZZLE_TO_PROBE_OFFSET
    // on my RRG X/Y is inverted (facing machine) in picture
    // this is a float
-   #define NOZZLE_TO_PROBE_OFFSET { 30, -30, -2.1 }
+   #define NOZZLE_TO_PROBE_OFFSET { 30, -30, -4.20 }
 #endif
 
 // Most probes should stay away from the edges of the bed, but
@@ -1121,7 +1125,7 @@
 #define PROBING_MARGIN 10
 #if ENABLED(EVANS)
    #undef PROBING_MARGIN
-   #define PROBING_MARGIN 35
+   #define PROBING_MARGIN 1  // using MESH_INSET instead
 #endif
 
 // X and Y axis travel speed (mm/min) between probes
@@ -1163,6 +1167,10 @@
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
+#if ENABLED(EVANS)
+    #undef Z_CLEARANCE_DEPLOY_PROBE
+    #define Z_CLEARANCE_DEPLOY_PROBE 6
+#endif
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1493,8 +1501,10 @@
      #define GRID_MAX_POINTS_Y 3
      // is this the same?
      #undef MESH_INSET
-     #define MESH_INSET 10
-     // #define MESH_INSET PROBING_MARGIN
+     // for UBL do not use PROBING_MARGIN
+     // "G29 T0"  will display the mesh, should be all on the bed
+     // Config_adv if you need to tweak this from a centered pattern
+     #define MESH_INSET 35
   #endif
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
